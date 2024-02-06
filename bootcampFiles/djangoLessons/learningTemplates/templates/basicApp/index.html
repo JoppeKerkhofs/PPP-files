@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+{% extends "basicApp/base.html" %}
+{% load myExtras %}
+{% block body_block %}
+	<h1>Index</h1>
+    <p>Index page</p>
+    <p>{{ text | cut:"hello" }}</p>
+    <p>{{ number | add:"99" }}</p>
+{% endblock %}
