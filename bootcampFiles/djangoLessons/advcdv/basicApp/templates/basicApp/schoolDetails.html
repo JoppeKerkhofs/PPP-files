@@ -1,0 +1,17 @@
+{% extends "basicApp/basicAppBase.html" %}
+{% block body_block %}
+    <h1>Welcome to the school detail page</h1>
+    <h2>School details:</h2>
+    <p>School name: {{ school.name }}</p>
+    <p>Principal: {{ school.principal }}</p>
+    <p>Location: {{ school.location }}</p>
+    <h3>Students:</h3>
+    <ul>
+        {% for student in school.students.all %}
+            <li>{{ student.name }} - {{ student.age }}</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'basicApp:update' pk=school.pk %}" class="btn btn-warning">Edit school</a></p>
+    <p><a href="{% url 'basicApp:delete' pk=school.pk %}" class="btn btn-danger">Delete school</a></p>
+{% endblock %}
