@@ -1,0 +1,22 @@
+<form action="" method="get">
+    {% comment %} value="{{ request.GET.movie_name }}" Keeps the value present after search{% endcomment %}
+    <input type="search" name="movie_name" value="{{ request.GET.movie_name }}">
+    <input type="submit" value="Search">
+</form>
+
+{% for movie_item in movies %}
+    {{ movie_item.name }}
+    <br>
+{% endfor %}
+
+{% if movies.has_previous %}
+    <a href="?page=1">First</a>
+    <a href="?page={{ movies.previous_page_number }}">Previous</a>
+{% endif %}
+
+Page: {{ movies.number }} of {{ movies.paginator.num_pages }}
+
+{% if movies.has_next %}
+    <a href="?page={{ movies.next_page_number }}">Next</a>
+    <a href="?page={{ movies.paginator.num_pages }}">Last</a>
+{% endif %}
